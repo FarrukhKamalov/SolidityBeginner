@@ -4,47 +4,30 @@ pragma solidity ^0.8.0;
 
 
 
-contract Ownable {
-    address owner;
+contract MultiplayerGame {
+    mapping(address => bool) public players;
 
-    modifier onlyOwner(){
-        require(msg.sender == owner, "Owner emassiz!");
-        _;
-    }
-
-    constructor()  {
-        owner = msg.sender;
+    function joinGame() public virtual {
+        players[msg.sender] = true;
     }
 }
 
 
-contract SecretVault {
-    string secret;
-    constructor(string memory _secret)  {
-        secret = _secret;
+contract Game is MultiplayerGame {
+    string public gameName;
+    uint256 public playerCount;
+
+    constructor(string memory _gameName) {
+        gameName = _gameName;
+        playerCount = 0;
     }
 
-    function getSecret() public view returns(string memory) {
-        return secret;
-    }
-}
-
-contract MyContract is Ownable {
-    // internhance
-    // factories
-    // interaction
-
-    address secretVault;
-
-    constructor(string memory _secret) {
-        SecretVault _secretVault = new SecretVault(_secret);
-        secretVault = address(_secretVault);
-        super;
+    function startGame() public {
+        
     }
 
-    function getSecret() public view onlyOwner returns(string memory) {
-        return SecretVault(secretVault).getSecret();
+    function joinGame() public override {
+        super.joinGame();
+        playerCount++;
     }
-
-    
 }
