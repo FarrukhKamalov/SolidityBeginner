@@ -60,6 +60,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - **Xususiyatlar**: O'zingizning loyiha uchun xususiyatlarni qo'shishingiz mumkin.
 - **Smart Contracts**: Har bir smart contract haqida batafsilroq ma'lumot kiritishingiz mumkin.
 
-Agar qo'shimcha savollar yoki o'zgarishlar bo'lsa, iltimos, ayting!
-
-
